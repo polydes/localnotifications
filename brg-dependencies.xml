@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dependencies>
+    
+    <section>
+        
+        <ndll buildfile="project/build" output="project/ndll/iPhone" />
+
+    </section>
+
+</dependencies>

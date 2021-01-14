@@ -1,5 +1,3 @@
-cd /Users/robin/stencylworks/engine-extensions/localnotifications/project
-
 mkdir ../ndll
 mkdir ../ndll/iPhone
 

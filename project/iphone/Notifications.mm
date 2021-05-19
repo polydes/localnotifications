@@ -171,9 +171,9 @@ using namespace notifications;
         }else if ([repeat isEqualToString:@"Year"])
         {
             notification.repeatInterval = NSCalendarUnitYear;
-        }else
+        }else //repeat is @"no repeat"
         {
-            notification.repeatInterval = nil;
+            notification.repeatInterval = 0;
         }
     
     if ([notification respondsToSelector:@selector(alertTitle)]) // iOS 8.2 and above
@@ -219,38 +219,36 @@ using namespace notifications;
         if ([repeat isEqualToString:@"Minute"])
         {
             triggerDate = [calendar
-                           components:NSCalendarUnitSecond + NSTimeZoneCalendarUnit
+                           components:NSCalendarUnitSecond + NSCalendarUnitTimeZone
                            fromDate:date];
         }else if ([repeat isEqualToString:@"Hour"])
         {
             triggerDate = [calendar
-                           components:NSCalendarUnitSecond + NSCalendarUnitMinute + NSTimeZoneCalendarUnit
+                           components:NSCalendarUnitSecond + NSCalendarUnitMinute + NSCalendarUnitTimeZone
                            fromDate:date];
         }else if ([repeat isEqualToString:@"Day"])
         {
             triggerDate = [calendar
-                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSTimeZoneCalendarUnit
+                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSCalendarUnitTimeZone
                            fromDate:date];
         }else if ([repeat isEqualToString:@"Week"])
         {
             triggerDate = [calendar
-                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSCalendarUnitWeekday + NSTimeZoneCalendarUnit
+                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSCalendarUnitWeekday + NSCalendarUnitTimeZone
                            fromDate:date];
         }else if ([repeat isEqualToString:@"Month"])
         {
             triggerDate = [calendar
-                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSCalendarUnitDay + NSTimeZoneCalendarUnit
+                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSCalendarUnitDay + NSCalendarUnitTimeZone
                            fromDate:date];
         }else if ([repeat isEqualToString:@"Year"])
         {
             triggerDate = [calendar
-                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSCalendarUnitDay + NSCalendarUnitMonth + NSTimeZoneCalendarUnit
+                           components:NSCalendarUnitHour + NSCalendarUnitMinute + NSCalendarUnitSecond + NSCalendarUnitDay + NSCalendarUnitMonth + NSCalendarUnitTimeZone
                            fromDate:date];
         }else
         {
-            triggerDate = [calendar
-                           components:nil
-                           fromDate:date];
+            //repeat is @"no repeat", triggerDate is unused
         }
     
         

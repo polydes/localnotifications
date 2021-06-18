@@ -1,6 +1,6 @@
 buildscript {
 	repositories {
-		jcenter()
+		mavenCentral()
 		google()
 	}
 	
@@ -9,7 +9,7 @@ buildscript {
 	}
 }
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 android {
 	compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
@@ -21,9 +21,14 @@ android {
 			java.srcDirs = ['src']
 		}
 	}
+
+	defaultConfig {
+		minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+		targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+	}
 }
 
 dependencies {
-	compile project(':deps:extension-api')
-	compile 'androidx.legacy:legacy-support-v4:1.0.0'
+	api project(':deps:extension-api')
+	implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
